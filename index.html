@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Interactiva: El Subjuntivo en Español</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F7F7;
+            color: #232323;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-node {
+            border: 2px solid #32B8E9;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .flowchart-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flowchart-line {
+            width: 2px;
+            background-color: #32B8E9;
+            margin: 0 auto;
+        }
+        .roadmap ol {
+            position: relative;
+            padding-left: 40px;
+            border-left: 3px solid #32B8E9;
+        }
+        .roadmap li {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .roadmap li::before {
+            content: counter(list-item);
+            counter-increment: list-item;
+            position: absolute;
+            left: -55px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #00A1E4;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 3px solid white;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="w-full text-center py-4">
+        <img src="https://raw.githubusercontent.com/idiomaswebespanol/menu-botones-enlaces/refs/heads/main/Logo.png" alt="Logo de Idiomas Web" class="h-12 md:h-16 mx-auto rounded-lg">
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 bg-[#00A1E4] p-4 md:p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-2">El Modo Subjuntivo</h1>
+            <p class="text-xl md:text-2xl text-white">Una guía visual para entender el mundo de la subjetividad en español.</p>
+        </header>
+
+        <main>
+            <section id="concepto" class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#232323] mb-2">El Corazón del Subjuntivo</h2>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">El subjuntivo no describe la realidad, sino cómo la percibimos. Es el modo de la duda, el deseo, la emoción y la hipótesis. Su función principal es la "suspensión de la aserción": no se afirma que algo es un hecho.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#00A1E4]">
+                        <h3 class="text-2xl font-bold text-center mb-4">Modo Indicativo</h3>
+                        <p class="text-center text-6xl mb-4">🌎</p>
+                        <p class="text-center font-semibold text-lg mb-4">El mundo de los HECHOS</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Expresa certeza y objetividad.</li>
+                            <li>Describe acciones reales y concretas.</li>
+                            <li>Ej: "Sé que **vienes** a la fiesta." (Es un hecho)</li>
+                            <li>Ej: "Busco al profesor que **enseña** español." (Conozco al profesor)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-[#32B8E9]">
+                        <h3 class="text-2xl font-bold text-center mb-4">Modo Subjuntivo</h3>
+                        <p class="text-center text-6xl mb-4">🤔</p>
+                        <p class="text-center font-semibold text-lg mb-4">El universo de la SUBJETIVIDAD</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Expresa duda, deseo, emoción.</li>
+                            <li>Se refiere a acciones hipotéticas o no realizadas.</li>
+                            <li>Ej: "Espero que **vengas** a la fiesta." (Es un deseo)</li>
+                            <li>Ej: "Busco un profesor que **enseñe** español." (No conozco a uno en específico)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="usos" class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#232323] mb-2">¿Cuándo lo Uso? Los Disparadores Clave</h2>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">El subjuntivo aparece principalmente en oraciones subordinadas. La clave está en el verbo o la expresión de la oración principal. El acrónimo **WEIRDO** te ayuda a recordar los principales disparadores.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="inline-block bg-white rounded-lg shadow-md p-4 mb-4">
+                        <p class="font-bold text-xl text-[#00A1E4]">Oración Principal</p>
+                    </div>
+                    <div class="h-8 flowchart-line"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">W</h3>
+                        <p class="font-semibold mb-2">Wishes (Deseos)</p>
+                        <p class="text-gray-600">Quiero que...</p>
+                        <p class="text-gray-600">Espero que...</p>
+                        <p class="italic mt-2">"Espero que **entiendas**."</p>
+                    </div>
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">E</h3>
+                        <p class="font-semibold mb-2">Emotions (Emociones)</p>
+                        <p class="text-gray-600">Me alegro de que...</p>
+                        <p class="text-gray-600">Siento que...</p>
+                        <p class="italic mt-2">"Me sorprende que **sepas** eso."</p>
+                    </div>
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">I</h3>
+                        <p class="font-semibold mb-2">Impersonal Expressions</p>
+                        <p class="text-gray-600">Es importante que...</p>
+                        <p class="text-gray-600">Es necesario que...</p>
+                        <p class="italic mt-2">"Es necesario que **estudiemos**."</p>
+                    </div>
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">R</h3>
+                        <p class="font-semibold mb-2">Recommendations</p>
+                        <p class="text-gray-600">Recomiendo que...</p>
+                        <p class="text-gray-600">Aconsejo que...</p>
+                        <p class="italic mt-2">"Te recomiendo que **descanses**."</p>
+                    </div>
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">D</h3>
+                        <p class="font-semibold mb-2">Doubt/Denial (Duda/Negación)</p>
+                        <p class="text-gray-600">Dudo que...</p>
+                        <p class="text-gray-600">No creo que...</p>
+                        <p class="italic mt-2">"No creo que **sea** posible."</p>
+                    </div>
+                    <div class="flowchart-node rounded-lg p-6 text-center">
+                        <h3 class="text-2xl font-bold text-[#00A1E4]">O</h3>
+                        <p class="font-semibold mb-2">Ojalá</p>
+                        <p class="text-gray-600">¡Ojalá...!</p>
+                        <p class="text-gray-600">Ojalá que...</p>
+                        <p class="italic mt-2">"¡Ojalá **llueva** café en el campo!"</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="formacion" class="mb-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#232323] mb-2">La Formación: Construyendo el Subjuntivo</h2>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Dominar la conjugación es clave. El presente se forma desde la primera persona del indicativo, mientras que los tiempos pasados tienen sus propias reglas.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">Frecuencia de Irregularidad (Presente)</h3>
+                        <p class="text-center text-gray-600 mb-4">Muchos de los verbos más comunes son irregulares en el presente de subjuntivo. Su formación a menudo depende de la forma "yo" del presente de indicativo (ej. tengo -> tenga).</p>
+                        <div class="chart-container">
+                            <canvas id="irregularityChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-2xl font-bold text-center mb-4">Tiempos Compuestos: La Fórmula</h3>
+                        <p class="text-center text-gray-600 mb-4">Los tiempos perfectos se forman con el verbo auxiliar "haber" en subjuntivo más el participio pasado del verbo principal. ¡Cuidado con los participios irregulares!</p>
+                        <div class="bg-gray-100 rounded-lg p-4 text-center mb-6">
+                            <p class="text-lg font-mono text-[#00A1E4]">haber (subj.) + participio</p>
+                        </div>
+                        <h4 class="font-bold mb-2">Participios irregulares comunes:</h4>
+                        <ul class="columns-2 list-disc list-inside text-gray-700">
+                            <li>abierto</li>
+                            <li>dicho</li>
+                            <li>hecho</li>
+                            <li>visto</li>
+                            <li>escrito</li>
+                            <li>puesto</li>
+                            <li>roto</li>
+                            <li>muerto</li>
+                            <li>cubierto</li>
+                            <li>vuelto</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comparacion" class="mb-16">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#232323] mb-2">Subjuntivo vs. El Mundo</h2>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">El español no está solo. El subjuntivo es una herencia del latín presente en las lenguas romances, aunque su uso y complejidad varían. Para los angloparlantes, representa uno de los mayores desafíos.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-center mb-4">Complejidad y Uso Obligatorio del Subjuntivo</h3>
+                    <p class="text-center text-gray-600 mb-4">Esta gráfica compara de forma cualitativa la prominencia del subjuntivo en varias lenguas. El español mantiene un sistema robusto y de uso frecuente en comparación con el inglés, donde es residual y mayormente opcional.</p>
+                    <div class="chart-container h-96">
+                        <canvas id="languageComparisonChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="practica" class="mb-16 roadmap">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-[#232323] mb-2">¡A Practicar! Tu Hoja de Ruta al Dominio</h2>
+                    <p class="max-w-3xl mx-auto text-lg text-gray-600">Dominar el subjuntivo es un maratón, no un sprint. Sigue estos pasos para internalizar su uso de forma natural.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <ol>
+                        <li>
+                            <h3 class="text-xl font-bold">Asocia y Conecta</h3>
+                            <p class="text-gray-700">Vincula el subjuntivo con la expresión de tus emociones, deseos y opiniones. Piensa en él como el "modo del sentimiento".</p>
+                        </li>
+                        <li>
+                            <h3 class="text-xl font-bold">Inmersión Activa</h3>
+                            <p class="text-gray-700">Escucha atentamente en conversaciones, películas o podcasts. Identifica cuándo y cómo los hablantes nativos usan el subjuntivo. Anota las frases que escuches.</p>
+                        </li>
+                        <li>
+                            <h3 class="text-xl font-bold">Habla sin Miedo</h3>
+                            <p class="text-gray-700">Practica en voz alta, incluso si estás solo. Formula frases con "espero que", "no creo que", "ojalá". La repetición crea el hábito.</p>
+                        </li>
+                        <li>
+                            <h3 class="text-xl font-bold">Memoriza los Disparadores</h3>
+                            <p class="text-gray-700">Aprende las expresiones clave (como las del acrónimo WEIRDO) que casi siempre van seguidas de subjuntivo. Serán tus señales de confianza.</p>
+                        </li>
+                        <li>
+                            <h3 class="text-xl font-bold">Sé Paciente y Constante</h3>
+                            <p class="text-gray-700">Nadie domina el subjuntivo en un día. La práctica regular y la exposición constante son más efectivas que estudiar intensamente una sola vez.</p>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-500">Infografía creada para visualizar la complejidad y belleza del modo subjuntivo en español.</p>
+        </footer>
+
+    </div>
+
+    <!-- Cabecera de la página -->
+    <header class="relative overflow-hidden pt-20 pb-20">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[#EFEFEF]"></div>
+        </div>
+        <div class="container mx-auto px-6 md:px-8 relative z-10 text-center">
+            <div class="mb-8">
+                <a href="#" class="text-3xl font-black text-[#5D6D7E]">@idiomaswebespanol</a>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-[#2C3E50] leading-tight mb-4">
+                Domina el Español y Francés. <br>Conviértete en Bilingüe.
+            </h1>
+            <p class="text-lg md:text-xl font-medium max-w-3xl mx-auto mb-8">
+                Soy especialista en ayudar a alcanzar la fluidez con programas personalizados.
+                me especializo en Francés para extranjeros. Español para extranjeros.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://wa.me/553299092071" target="_blank" class="bg-green-500 text-white font-bold py-4 px-12 rounded-full text-lg shadow-xl hover:bg-green-600 transition-colors duration-300 flex items-center gap-2">
+                    <span class="text-2xl">&#x1F4F1;</span>
+                    Contáctame por WhatsApp
+                </a>
+                <a href="https://youtube.com/@idiomasweb?si=SL8B6F1z6SYkl-HP" target="_blank" class="bg-[#E74C3C] text-white font-bold py-4 px-12 rounded-full text-lg shadow-xl hover:bg-[#C0392B] transition-colors duration-300">
+                    <span class="text-2xl">&#x25B6;&#xfe0e;</span>
+                    YouTube
+                </a>
+            </div>
+            <!-- Enlaces de contacto y redes sociales -->
+            <div class="mt-8 flex justify-center flex-wrap gap-6 text-xl">
+                <a href="mailto:idiomaswebinfo@gmail.com" class="text-[#5D6D7E] hover:text-[#A9A9A9] transition-colors duration-300 flex items-center gap-2">
+                    <span class="text-2xl">&#x2709;&#xfe0e;</span>
+                    <span>idiomaswebinfo@gmail.com</span>
+                </a>
+                <a href="https://instagram.com/idiomaswebespanol" target="_blank" class="text-[#5D6D7E] hover:text-[#A9A9A9] transition-colors duration-300 flex items-center gap-2">
+                    <span class="text-2xl">&#x1F4F8;</span>
+                    <span>@idiomaswebespanol</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        function wrapLabel(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const sharedTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const colors = {
+            blue: '#00A1E4',
+            lightBlue: '#32B8E9',
+            skyBlue: '#76DDFB',
+            darkGray: '#232323',
+            lightGray: '#F7F7F7'
+        };
+
+        const irregularityData = {
+            labels: ['Regulares', ['Irregulares de', 'cambio de raíz'], ['Irregulares en', 'forma "yo"'], 'Irregulares Especiales'],
+            datasets: [{
+                label: 'Tipos de Verbos',
+                data: [35, 30, 25, 10],
+                backgroundColor: [
+                    colors.skyBlue,
+                    colors.lightBlue,
+                    colors.blue,
+                    colors.darkGray
+                ],
+                borderColor: colors.lightGray,
+                borderWidth: 2
+            }]
+        };
+
+        const irregularityCtx = document.getElementById('irregularityChart').getContext('2d');
+        new Chart(irregularityCtx, {
+            type: 'doughnut',
+            data: irregularityData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const languageData = {
+            labels: ['Inglés', 'Francés', 'Italiano', 'Portugués', 'Español'],
+            datasets: [{
+                label: 'Complejidad y Frecuencia de Uso',
+                data: [15, 65, 80, 85, 95],
+                backgroundColor: colors.blue,
+                borderColor: colors.darkGray,
+                borderWidth: 1
+            }]
+        };
+
+        const languageCtx = document.getElementById('languageComparisonChart').getContext('2d');
+        new Chart(languageCtx, {
+            type: 'bar',
+            data: languageData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += context.parsed.x + '% (Estimación Cualitativa)';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
